@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <h1>Practice </h1>
+        <p>
+            There is absolutely no substitute for practice in learning programming. 
+            No amount of articulate writing on my part is alone going to make you a programmer. 
+        </p>
+        <p> With that in mind, let’s try practicing some of the concepts we learned here in this chapter. 
+            I’ll give the “requirements,” and you try it first. Then consult the code listing below to see how I approached it: </p>
+        <ul>
+            <li> Write a program to calculate the total price of your phone purchase. You will keep purchasing phones (hint: loop!) until you run out of money in your bank account. 
+                You’ll also buy accessories for each phone as long as your purchase amount is below your mental spending threshold. </li>
+            <li>After you’ve calculated your purchase amount, add in the tax, then print out the calculated purchase amount, properly formatted. </li>
+            <li>Finally, check the amount against your bank account balance to see if you can afford it or not.</li>
+            <li>You should set up some constants for the “tax rate,” “phone price,” “accessory price,” and “spending threshold,” as well as a variable for your “bank account balance.” </li>
+            <li>You should define functions for calculating the tax and for formatting the price with a “$” and rounding to two decimal places.</li>
+            <li>Bonus Challenge: Try to incorporate input into this program, perhaps with the prompt(..) covered in “Input” on page 6. You may prompt the user for their bank account balance, for example.</li>
+        </ul>
+        <p>Have fun and be creative! </p>
+    </div>
+
+
+    
+    <script>
+        const 
+            // allMoney = 22000,
+            allMoney = parseInt(prompt('Enter Amount of Your Bank Account', '0')),
+            iphonePrice = 16600,
+            // mentalThreshold = 1300,
+            mentalThreshold = parseInt(prompt('Enter Your Mental Finance Treshold on Accessories', '0')),
+            accessoryPrice = 500;
+        let totalPrice = 0,
+            phonePrice = 0,
+            accessoriesPrice = 0,
+            phoneQuantity = 0,
+            accessoryQuantity = 0;
+
+        function taxCalculate(x) {
+            return x * 0.2;
+        }
+
+        for (let i = 1; i <= allMoney / (iphonePrice + taxCalculate(iphonePrice)); i++) {
+            phonePrice += iphonePrice + taxCalculate(iphonePrice);
+            phoneQuantity = Math.trunc(allMoney / (iphonePrice + taxCalculate(iphonePrice)));
+        }
+
+        for (let j = 1; j <= mentalThreshold / (accessoryPrice + taxCalculate(accessoryPrice)); j++) {
+            accessoriesPrice += accessoryPrice + taxCalculate(accessoryPrice);
+            accessoryQuantity = Math.trunc(mentalThreshold / (accessoryPrice + taxCalculate(accessoryPrice)));
+        }
+
+        totalPrice = (phonePrice + accessoriesPrice).toFixed(2) + '$'; 
+
+        console.log('phonePrice', phonePrice);
+        console.log('phoneQuantity', phoneQuantity);
+        console.log('accessoriesPrice', accessoriesPrice);
+        console.log('accessoryQuantity', accessoryQuantity);
+        console.log('total', totalPrice);
+
+    </script>
+</body>
+</html>
