@@ -30,40 +30,45 @@
 
     
     <script>
-        const 
-            // allMoney = 22000,
-            allMoney = parseInt(prompt('Enter Amount of Your Bank Account', '0')),
-            iphonePrice = 16600,
-            // mentalThreshold = 1300,
-            mentalThreshold = parseInt(prompt('Enter Your Mental Finance Treshold on Accessories', '0')),
-            accessoryPrice = 500;
-        let totalPrice = 0,
-            phonePrice = 0,
-            accessoriesPrice = 0,
-            phoneQuantity = 0,
-            accessoryQuantity = 0;
+        function buyPhone() {
+            const 
+                // allMoney = 22000,
+                allMoney = parseInt(prompt('Enter Amount of Your Bank Account', '0')),
+                iphonePrice = 16600,
+                // mentalThreshold = 1300,
+                mentalThreshold = parseInt(prompt('Enter Your Mental Finance Treshold on Accessories', '0')),
+                accessoryPrice = 500;
+            let totalPrice = 0,
+                phonePrice = 0,
+                accessoriesPrice = 0,
+                phoneQuantity = 0,
+                accessoryQuantity = 0;
 
-        function taxCalculate(x) {
-            return x * 0.2;
+            function taxCalculate(x) {
+                return x * 0.2;
+            }
+
+            for (let i = 1; i <= allMoney / (iphonePrice + taxCalculate(iphonePrice)); i++) {
+                phonePrice += iphonePrice + taxCalculate(iphonePrice);
+                phoneQuantity = Math.trunc(allMoney / (iphonePrice + taxCalculate(iphonePrice)));
+            }
+
+            for (let j = 1; j <= mentalThreshold / (accessoryPrice + taxCalculate(accessoryPrice)); j++) {
+                accessoriesPrice += accessoryPrice + taxCalculate(accessoryPrice);
+                accessoryQuantity = Math.trunc(mentalThreshold / (accessoryPrice + taxCalculate(accessoryPrice)));
+            }
+
+            totalPrice = (phonePrice + accessoriesPrice).toFixed(2) + '$'; 
+
+            console.log('phonePrice', phonePrice);
+            console.log('phoneQuantity', phoneQuantity);
+            console.log('accessoriesPrice', accessoriesPrice);
+            console.log('accessoryQuantity', accessoryQuantity);
+            console.log('total', totalPrice);
         }
 
-        for (let i = 1; i <= allMoney / (iphonePrice + taxCalculate(iphonePrice)); i++) {
-            phonePrice += iphonePrice + taxCalculate(iphonePrice);
-            phoneQuantity = Math.trunc(allMoney / (iphonePrice + taxCalculate(iphonePrice)));
-        }
-
-        for (let j = 1; j <= mentalThreshold / (accessoryPrice + taxCalculate(accessoryPrice)); j++) {
-            accessoriesPrice += accessoryPrice + taxCalculate(accessoryPrice);
-            accessoryQuantity = Math.trunc(mentalThreshold / (accessoryPrice + taxCalculate(accessoryPrice)));
-        }
-
-        totalPrice = (phonePrice + accessoriesPrice).toFixed(2) + '$'; 
-
-        console.log('phonePrice', phonePrice);
-        console.log('phoneQuantity', phoneQuantity);
-        console.log('accessoriesPrice', accessoriesPrice);
-        console.log('accessoryQuantity', accessoryQuantity);
-        console.log('total', totalPrice);
+        buyPhone();
+        
 
     </script>
 </body>
